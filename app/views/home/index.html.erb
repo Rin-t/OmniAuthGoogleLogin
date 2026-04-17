@@ -1,0 +1,16 @@
+<h1>OmniAuth Google Login Demo</h1>
+
+<% if user_signed_in? %>
+  <section>
+    <h2>ログイン中</h2>
+    <% if current_user.image.present? %>
+      <%= image_tag current_user.image, alt: current_user.name, width: 80, height: 80 %>
+    <% end %>
+    <p>名前: <%= current_user.name %></p>
+    <p>メール: <%= current_user.email %></p>
+    <p>Provider: <%= current_user.provider %></p>
+    <%= button_to "ログアウト", logout_path, method: :delete %>
+  </section>
+<% else %>
+  <%= button_to "Googleでログイン", "/auth/google_oauth2", method: :post, data: { turbo: false } %>
+<% end %>
