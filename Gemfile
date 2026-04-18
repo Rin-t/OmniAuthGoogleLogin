@@ -44,6 +44,9 @@ gem "image_processing", "~> 1.2"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
+# OAuth 2.0 provider for issuing access tokens
+gem "doorkeeper"
+
 # Load environment variables from .env
 gem "dotenv-rails", groups: [:development, :test]
 

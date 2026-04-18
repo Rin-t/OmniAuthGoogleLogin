@@ -12,5 +12,5 @@
     <%= button_to "ログアウト", logout_path, method: :delete %>
   </section>
 <% else %>
-  <%= button_to "Googleでログイン", "/auth/google_oauth2", method: :post, data: { turbo: false } %>
+  <%= button_to "Googleでログイン", "/auth/google", method: :post, data: { turbo: false } %>
 <% end %>
