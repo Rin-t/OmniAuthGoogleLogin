@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting to Google...</title>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= form_with url: "/auth/google", method: :post, local: true, id: "auto_submit" do %>
+    <% end %>
+    <p>Redirecting to Google...</p>
+    <script>
+      document.getElementById('auto_submit').submit();
+    </script>
+  </body>
+</html>

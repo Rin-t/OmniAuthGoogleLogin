@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_17_175743) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_18_135545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,6 +56,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_17_175743) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "oauth_pending_states", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "redirect_uri", null: false
+    t.string "state", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["expires_at"], name: "index_oauth_pending_states_on_expires_at"
+    t.index ["state"], name: "index_oauth_pending_states_on_state", unique: true
+    t.index ["user_id"], name: "index_oauth_pending_states_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email"
@@ -69,4 +81,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_17_175743) do
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_pending_states", "users"
 end

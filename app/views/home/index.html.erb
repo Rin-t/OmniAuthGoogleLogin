@@ -1,5 +1,10 @@
 <h1>OmniAuth Google Login Demo</h1>
 
+<% if flash[:debug] %>
+  <h3>OAuthコールバック受信データ</h3>
+  <pre><%= JSON.pretty_generate(JSON.parse(flash[:debug])) %></pre>
+<% end %>
+
 <% if user_signed_in? %>
   <section>
     <h2>ログイン中</h2>
@@ -12,5 +17,7 @@
     <%= button_to "ログアウト", logout_path, method: :delete %>
   </section>
 <% else %>
-  <%= button_to "Googleでログイン", "/auth/google", method: :post, data: { turbo: false } %>
+  <%= button_to "Googleでログイン (state/custom付き)",
+                "/auth/google?state=my_state_123&custom_param=hello",
+                method: :post, data: { turbo: false } %>
 <% end %>
