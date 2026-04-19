@@ -2,8 +2,8 @@ import Foundation
 
 enum OAuthConfig {
     static let baseURL          = URL(string: "http://localhost:3001")!
-    static let clientID         = ""
-    static let clientSecret     = ""
+    static let clientID         = OAuthSecrets.clientID
+    static let clientSecret     = OAuthSecrets.clientSecret
     static let redirectURI      = "googleloginsample://callback"
     static let callbackScheme   = "googleloginsample"
     static let scope            = "read"

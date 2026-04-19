@@ -37,6 +37,9 @@
 # Per-user Claude Code settings
 /.claude/settings.local.json
 
+# OAuth secrets for iOS (copy OAuthSecrets.swift.example and fill in)
+GoogleLoginSample/GoogleLoginSample/OAuthSecrets.swift
+
 # macOS
 .DS_Store
 
